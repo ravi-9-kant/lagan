@@ -102,7 +102,7 @@ function createCelebration() {
 }
 
 function openInvite() {
-  // Let CSS handle the hiding perfectly while flap opens
+  // CSS handles the envelope opening animation
   envelopeWrap.classList.add('open');
 
   if (bgAudio.paused) {
