@@ -169,7 +169,7 @@ body.hindi-mode { font-family: 'Noto Sans Devanagari', sans-serif; }
 .ganesha-env-icon {
   width: 60px;
   height: auto;
-  margin-bottom: 0; /* No negative margin, prevents clipping */
+  margin-bottom: 0; 
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
 }
 
@@ -199,19 +199,19 @@ body.hindi-mode { font-family: 'Noto Sans Devanagari', sans-serif; }
 /* Open Invite Button (Decreased Size, 1 Line) */
 .open-invite-btn {
   position: relative;
-  padding: 6px 14px; /* Reduced padding */
+  padding: 6px 14px; 
   border: 2px solid var(--gold);
   border-radius: 999px;
   background: linear-gradient(180deg, var(--ivory), #F5DEB3);
   color: var(--maroon);
   font-weight: 800;
-  font-size: 0.85rem; /* Smaller Font */
+  font-size: 0.85rem; 
   letter-spacing: 0.05em;
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
   cursor: pointer;
   transition: all 0.3s ease;
   pointer-events: auto; 
-  white-space: nowrap; /* Ensures "Open Invite" stays on a single line */
+  white-space: nowrap; /* Forces text onto one line */
 }
 .open-invite-btn:hover {
   transform: scale(1.05);
@@ -258,6 +258,7 @@ body.hindi-mode { font-family: 'Noto Sans Devanagari', sans-serif; }
 .envelope-wrap.open .envelope-text-overlay { opacity: 0; } 
 .envelope-wrap.open { opacity: 0; transform: scale(0.8); pointer-events: none; }
 
+
 /* Main Content */
 .celebration-layer {
   position: fixed;
@@ -266,6 +267,23 @@ body.hindi-mode { font-family: 'Noto Sans Devanagari', sans-serif; }
   z-index: 30;
   overflow: hidden;
 }
+
+/* CRITICAL FIX: Changing span display to inline-block for transforms to work */
+.celebration-flower {
+  position: absolute;
+  display: inline-block; 
+  font-size: 22px;
+  animation: flowerFall 2.8s linear forwards;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+  color: #FFB347;
+  will-change: transform;
+}
+@keyframes flowerFall {
+  0% { transform: translateY(-40px) rotate(0deg) scale(0.7); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg) scale(1.1); opacity: 0; }
+}
+
 
 .royal-frame {
   background: linear-gradient(180deg, var(--ivory), #FAEDD9);
@@ -366,7 +384,6 @@ body.hindi-mode { font-family: 'Noto Sans Devanagari', sans-serif; }
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Main inner names remain large as requested */
 .name-img-couple {
   height: 55px;
   object-fit: contain;
@@ -418,9 +435,10 @@ body.hindi-mode { font-family: 'Noto Sans Devanagari', sans-serif; }
   border: 1px solid var(--gold);
   height: 250px; 
   width: 100%;
+  background: var(--ivory); /* Adds background to prevent blank edges */
 }
 .calendar-preview {
-  object-fit: cover; 
+  object-fit: contain; /* Ensures the calendar image is never cropped */
 }
 .map-iframe { 
   display: block; 
@@ -480,7 +498,6 @@ body.hindi-mode { font-family: 'Noto Sans Devanagari', sans-serif; }
   .page-shell { padding: 20px; }
   .envelope-wrap { width: min(70vw, 540px); height: min(50vw, 380px); }
   
-  /* Desktop spacing adjustments for envelope */
   .env-top-wrapper { bottom: calc(50% + 40px); }
   .shree-env { font-size: 1rem; }
   .ganesha-env-icon { width: 75px; }
